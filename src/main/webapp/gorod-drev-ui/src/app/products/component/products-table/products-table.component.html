@@ -1,0 +1,48 @@
+<button (click)="this.openDialog(undefined)">Add New Product</button>
+
+<mat-table [dataSource]="this.products" matSort matSortDisableClear>
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="salePrice">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Sale Price</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.salePrice}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="masterPrice">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Master Price</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.masterPrice}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="master">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Master</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.master.name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button (click)="this.openDialog(element)">Edit</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="this.displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: this.displayedColumns;"></mat-row>
+
+</mat-table>
+
+<mat-paginator
+  [length]="this.totalCount"
+  [pageSize]="this.pageSize"
+  [pageSizeOptions]="this.pageSizeOptions"
+  (page)="this.onPaginateChange($event)"
+  [showFirstLastButtons]="true">
+</mat-paginator>

@@ -1,0 +1,22 @@
+<mat-table [dataSource]="this.warehouses" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.surname}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="this.displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: this.displayedColumns;"
+           (click)="this.clickRow(row)">
+  </mat-row>
+</mat-table>
+

@@ -1,0 +1,24 @@
+<form [formGroup]="this.formGroup">
+  <input type="text" [formControl]="this.idFormControl" title="Search Product By Id">
+  <input type="text" [formControl]="this.nameFormControl" title="Search Product By Name">
+  <select [formControl]="this.masterIdFormControl" title="Select Master">
+    <option value="-1">---</option>
+    <option *ngFor="let master of this.masters$ | async" value="{{master.id}}">{{master.name}}</option>
+  </select>
+</form>
+
+<app-products-table *ngIf="(this.productsTableApi$ | async) as productsTableApi"
+                    [productsTableApi]="productsTableApi"
+                    [masters$]="this.masters$"
+                    [initSort]="this.productsSearchParams.sort"
+                    [initOrder]="this.productsSearchParams.order"
+                    [pageIndex]="this.productsSearchParams.pageIndex"
+                    [pageSize]="this.productsSearchParams.pageSize"
+                    (sortEvent)="this.receiveSort($event)"
+                    (orderEvent)="this.receiveOrder($event)"
+                    (pageIndexEvent)="this.receivePageIndex($event)"
+                    (pageSizeEvent)="this.receivePageSize($event)"
+                    (saveProductEvent)="this.saveProduct($event)"
+></app-products-table>
+
+

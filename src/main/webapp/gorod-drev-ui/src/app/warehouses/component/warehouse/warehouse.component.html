@@ -1,0 +1,35 @@
+<mat-table [dataSource]="this.warehouseProductInfos" class="mat-elevation-z8">
+  <ng-container matColumnDef="productId">
+    <mat-header-cell *matHeaderCellDef>Product Id</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.product.id}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="productName">
+    <mat-header-cell *matHeaderCellDef>Product Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.product.name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="totalCount">
+    <mat-header-cell *matHeaderCellDef>Total Count</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.totalCount}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="bookedCount">
+    <mat-header-cell *matHeaderCellDef>Booked Count</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.bookedCount}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="leftCount">
+    <mat-header-cell *matHeaderCellDef>Left Count</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.leftCount}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastDeliveryDate">
+    <mat-header-cell *matHeaderCellDef>Last Delivery Date</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.lastDeliveryDate | date}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="this.displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: this.displayedColumns;"></mat-row>
+</mat-table>
+
